@@ -29,7 +29,7 @@ What remains are the essentials that provide benefit without drawbacks and witho
 
 The following is in this project:
 - css-loader
--- allows chaining of css loader steps
+   - allows chaining of css loader steps
 - mini-css-extract-plugin
 -- extracts CSS into separate files
 - css-minimizer-webpack-plugin
