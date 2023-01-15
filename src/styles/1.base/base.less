@@ -1,0 +1,52 @@
+/*
+ * Base consists of all the base rules.
+ * These base rules are the defaults and are almost exclusively single element selectors.
+ * Essentially, a base style says that wherever this element is on the page, it should look like this.
+ */
+@import "../0.constants/constants.less";
+
+*,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  .regular-text();
+  color: @primary-color;
+  font-size: 16px;
+}
+
+h1 {
+  .regular-text();
+  font-size: 68px;
+  margin: 0 0 48px 0;
+  text-align: center;
+}
+
+h2 {
+  .regular-text();
+  font-size: 26px;
+  margin: 0 0 12px 0;
+}
+
+p {
+  .regular-text();
+  font-size: 14px;
+  line-height: 18px;
+  margin: 0 0 12px 0;
+}
+
+pre {
+  display: inline;
+}
+
+ul {
+  padding: 0 0 10px 20px;
+
+}
+ 
+
+@import "../2.layout/layout.less";
+@import "../3.module/module.less";
+@import "../4.state/state.less";
