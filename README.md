@@ -31,25 +31,25 @@ The following is in this project:
 - css-loader
    - allows chaining of css loader steps
 - mini-css-extract-plugin
--- extracts CSS into separate files
+   - extracts CSS into separate files
 - css-minimizer-webpack-plugin
--- minimizes css
+   - minimizes css
 - style-loader
--- injects CSS into the DOM
+   - injects CSS into the DOM
 - less
--- integrates .less in the project and allows compiling of .less files 
+   - integrates .less in the project and allows compiling of .less files 
 - less-loader
--- less loader for webpack
+   - less loader for webpack
 - html-loader
--- exports html as string allowing it to be imported where required, this also allows HTML to be minimized
+   - exports html as string allowing it to be imported where required, this also allows HTML to be minimized
 - html-webpack-plugin
--- simplifies creation of HTML files to serve your webpack bundles
+   - simplifies creation of HTML files to serve your webpack bundles
 - webpack
--- module bundler
+   - module bundler
 - webpack-cli
--- command line interface
+  - command line interface
 - webpack-dev-server
--- development server
+  - development server
 
 ### Why .less?
 
