@@ -5,10 +5,12 @@
 export class SomeFunctionality {
 
     logSomething() {
-        console.log(`method has been called in ${SomeFunctionality.name} `)
+        console.log(`method has been called in SomeFunctionality`);
+
+        this.thisIsAPrivateMethod(`parameter`);
     }
 
     thisIsAPrivateMethod = (param) => {
-        console.log(`this is logged from a private method, called from public method \`SomeFunctionality.logSomething\``);
+        console.log(`this is logged from a private method, called from public method \`SomeFunctionality.logSomething\` with ${param}`);
     }
 }
