@@ -27,30 +27,6 @@ Plain, but with those things added that bring usefull functionality when require
 This project offers a basic setup for a front-end applications with all the clutter taken out.
 What remains are the essentials that provide benefit without drawbacks and without impeding in working with Javascript, HTLM and CSS that include newer functionality.
 
-The following is in this project:
-- css-loader
-   - allows chaining of css loader steps
-- mini-css-extract-plugin
-   - extracts CSS into separate files
-- css-minimizer-webpack-plugin
-   - minimizes css
-- style-loader
-   - injects CSS into the DOM
-- less
-   - integrates .less in the project and allows compiling of .less files 
-- less-loader
-   - less loader for webpack
-- html-loader
-   - exports html as string allowing it to be imported where required, this also allows HTML to be minimized
-- html-webpack-plugin
-   - simplifies creation of HTML files to serve your webpack bundles
-- webpack
-   - module bundler
-- webpack-cli
-  - command line interface
-- webpack-dev-server
-  - development server
-
 ### Why .less?
 
 Less is amazing, its small and adds to CSS what it is missing and does so in a way that it does not impede with development practises.
@@ -73,6 +49,29 @@ Checkout, replace all `replace-with` in the code, replace favicon.ico, npm insta
 
 The HTML, CSS, Javascript will be optimized and minimized.
 The assets (images, fonts etc..) will be encoded and packaged.
+
+## How to run it?
+
+Run a basic static file server (resolve CORS errors):
+
+```
+cd /src
+python -m http.server 3000
+```
+Then open: http://localhost:3000
+
+## Compile LESS to CSS
+
+execute: `lessc styles/1.base/base.less styles/base.css` or add a wachter with: lessc --watch styles/1.base/base.less styles/base.css
+The watcher keeps running, recompiling whenever you save the .less file.
+
+## Minify / clean the CSS
+
+execute: `cleancss -o styles/base.min.css styles/base.css`
+
+## Build, required to run
+
+execute: `esbuild index.js --bundle --minify --outfile=dist/bundle.min.js`
 
 ## Note about experience
 
