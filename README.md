@@ -67,7 +67,7 @@ The watcher keeps running, recompiling whenever you save the .less file.
 
 ## Minify / clean the CSS
 
-execute: `cleancss -o styles/base.min.css styles/base.css`
+execute: `cleancss -o dist/base.min.css styles/base.css`
 
 ## Build, required to run
 
