@@ -147,6 +147,14 @@ For juniors, a framework might still be a better choice until they’re more com
 
 ---
 
+## Contributing
+
+Contributions, issues, and feature requests are welcome!  
+Feel free to open an issue or submit a pull request.
+Happy coding! 🚀
+
+---
+
 ## 📄 License  
 MIT — do what you want, but don’t blame us if it breaks.
 
