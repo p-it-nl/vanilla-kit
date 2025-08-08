@@ -3,13 +3,16 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./dist/base.min.css" />
+    <link rel="stylesheet" href="{{CSS_PATH}}">
     <title>replace-with-application-name</title>
 </head>
 
 <body>
     <app-root></app-root>
-    <script type="module" src="./dist/bundle.min.js"></script>
+
+    <script type="module" src="{{JS_PATH}}"></script>
+
+    {{LIVE_RELOAD_SCRIPT}}
 </body>
 
 </html>
