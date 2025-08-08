@@ -2,6 +2,8 @@
 
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/p-it-nl/vanilla-kit)
 
+[See the v1.0.0 release notes](https://github.com/p-it-nl/vanilla-kit/releases/tag/v1.0.0)
+
 *A lightweight, framework-less starter kit — vanilla JS, no node_modules bloat*
 
 **VanillaKit** is a minimal build setup for modern front-end applications — no frameworks, no bloat, just HTML, CSS, and JavaScript with a lean build pipeline.
