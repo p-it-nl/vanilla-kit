@@ -46,7 +46,7 @@ elif [ "$mode" = "debug" ]; then
     
     # Compile LESS and minify CSS in one step
     lessc src/styles/1.base/base.less > dist/base.css
-    echo "LESS compiled and CSS minified."
+    echo "LESS compiled"
 
     # Copy JS
     cp src/index.js dist/index.js
