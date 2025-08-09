@@ -1,176 +1,104 @@
 <div class="content">
-    <h1>base-ff</h1>
+  <h1>VanillaKit</h1>
 
-    <p>Base-ff stands for base front-end framework.
-        This project is a starter project for front-end applications</p>
+  <p><em>A lightweight, framework-less starter kit — vanilla JS, no node_modules bloat.</em></p>
 
-    <h2>Why this project?</h2>
-    <p>There are many front-end frameworks, from heavy fully loaded frameworks like `angular` and `ember` to smaller
-        frameworks like `react` and `knockout`.
-        The main reason why all these frameworks exist, is to solve a problem that Javascript, HTML and CSS themselfs,
-        did
-        not offer solutions for.<br>
-        Since the development of all the frameworks HTLM, CSS and Javascript have come a long way into fixing issues and
-        providing solutions that were not available before.
-        This significantly decreases the significance of frameworks and provides a way to opt-out of the opiniated
-        framework
-        way of working and often times strict rules.</p>
+  <h2>Why VanillaKit?</h2>
+  <p>
+    The front-end ecosystem is full of massive frameworks and fast-moving libraries. Modern
+    JavaScript, CSS and HTML have advanced a lot in recent years, which makes many framework
+    conveniences possible without a heavy runtime. VanillaKit embraces that: keep what’s useful
+    (bundling, minification, live reload) and ditch what’s not (framework lock-in, bloated dependency trees).
+  </p>
 
-    <p>What is more, no framework is perfect, all frameworks have things they do well and things they do not do well.
-        For a long time this has been a valuable trade since what the frameworks do well, where drasticly more
-        benificial
-        then the drawbacks they had.</p>
+  <h2>Key Features</h2>
+  <ul>
+    <li>Framework-free — pure HTML, LESS, and vanilla JavaScript</li>
+    <li>Two modes — production (minified) &amp; debug (unminified)</li>
+    <li>Optional hot reload — works with a plain static server (no special dev server required)</li>
+    <li>Minimal dependencies — <code>lessc</code>, <code>clean-css-cli</code>, <code>esbuild</code></li>
+    <li>Cross-platform — Windows, macOS, Linux</li>
+    <li>Single HTML source — debug/prod paths injected at build time</li>
+    <li>Simple deployment — copy <code>/dist</code> to your server and you’re done</li>
+  </ul>
 
-    <p>Now with many big issues in Javascript fixed and features like modules (2015), objects (2016-2019), async
-        functions
-        (2018), import (2020), class fields (2021), class static block (2021), and much much more....
-        The trade-off between framework and plain is not as evident any more.</p>
+  <h2>Project Structure</h2>
+  <pre>
+src/
+  assets/        &nbsp;# images, fonts, etc.
+  components/    &nbsp;# HTML partials / UI fragments
+  js/            &nbsp;# application JavaScript (includes optional livereload.js)
+  styles/        &nbsp;# LESS styles (SMACSS-inspired)
+  index.html     &nbsp;# template with placeholders
 
-    <p>Another thing to take in consideration is the extreme speed in which Javascript libraries tend to be updated,
-        deprecated and deleted. Adding to the already huge stream of dependencies being put in node_modules every
-        install.
-        With dependencies being depend on others which in turn frequently break the framework when not upgraded in time,
-        to
-        early or not all at once.</p>
+dist/            &nbsp;# build output
+  </pre>
 
-    <p>This project takes the stance that at some point in the future, frameworks are out and plain is back in.
-        Plain, but with those things added that bring usefull functionality when required.</p>
+  <h2>Installation</h2>
+  <p>Install the minimal build tools via the included script:</p>
+  <pre><code>sh install-deps.sh</code></pre>
+  <p>This installs the CLI tools used by the build: <code>lessc</code>, <code>clean-css-cli</code>, and <code>esbuild</code>.</p>
 
-    <h2>What is in the project?</h2>
+  <h2>Build</h2>
+  <p><strong>Production build (default)</strong></p>
+  <pre><code>sh build.sh</code></pre>
+  <p><strong>Debug build (development)</strong></p>
+  <pre><code>sh build.sh debug</code></pre>
 
-    <p>This project offers a basic setup for a front-end applications with all the clutter taken out.
-        What remains are the essentials that provide benefit without drawbacks and without impeding in working with
-        Javascript, HTLM and CSS that include newer functionality.</p>
+  <h2>Hot Reload (Development)</h2>
+  <p>Start file-watch + live-reload:</p>
+  <pre><code>sh watch.sh</code></pre>
+  <p>Then serve the dist folder:</p>
+  <pre><code>cd dist
+python -m http.server 3000
+</code></pre>
+  <p>Open <a href="http://localhost:3000">http://localhost:3000</a></p>
 
-    <p>The following is in this project:</p>
-    <ul>
-        <li>
-            css-loader
-            <ul>
-                <li>
-                    <i>allows chaining of css loader steps</i>
-                </li>
-            </ul>
-        </li>
-        <li>
-            mini-css-extract-plugin
-            <ul>
-                <li>
-                    <i>extracts CSS into separate files</i>
-                </li>
-            </ul>
-        </li>
-        <li>
-            css-minimizer-webpack-plugin
-            <ul>
-                <li>
-                    <i>minimizes css</i>
-                </li>
-            </ul>
-        </li>
-        <li>
-            style-loader
-            <ul>
-                <li>
-                    <i>injects CSS into the DOM</i>
-                </li>
-            </ul>
-        </li>
-        <li>
-            less
-            <ul>
-                <li>
-                    <i>integrates .less in the project and allows compiling of .less files</i>
-                </li>
-            </ul>
-        </li>
-        <li>
-            less-loader
-            <ul>
-                <li>
-                    <i>less loader for webpack</i>
-                </li>
-            </ul>
-        </li>
-        <li>
-            html-loader
-            <ul>
-                <li>
-                    <i>exports html as string allowing it to be imported where required, this also allows HTML to be
-                        minimized</i>
-                </li>
-            </ul>
-        </li>
-        <li>
-            html-webpack-plugin
-            <ul>
-                <li>
-                    <i>simplifies creation of HTML files to serve your webpack bundles</i>
-                </li>
-            </ul>
-        </li>
-        <li>
-            webpack
-            <ul>
-                <li>
-                    <i>module bundler</i>
-                </li>
-            </ul>
-        </li>
-        <li>
-            webpack-cli
-            <ul>
-                <li>
-                    <i>command line interface</i>
-                </li>
-            </ul>
-        </li>
-        <li>
-            webpack-dev-server
-            <ul>
-                <li>
-                    <i>development server</i>
-                </li>
-            </ul>
-        </li>
-    </ul>
+  <h2>Philosophy</h2>
+  <p>
+    Frameworks were essential when browsers lacked features. Today, ES modules, modern CSS, async/await,
+    and other language improvements cover many needs. VanillaKit favors small, explicit build steps and
+    minimal tooling — full control without hidden magic.
+  </p>
 
-    <h3>Why .less?</h3>
+  <h2>Why LESS?</h2>
+  <p>
+    LESS is lightweight and adds useful features (variables, nesting, mixins) without forcing heavy conventions.
+    It helps keep CSS maintainable without introducing unnecessary complexity.
+  </p>
 
-    <p>Less is amazing, its small and adds to CSS what it is missing and does so in a way that it does not impede with
-        development practises.
-        SASS was amazing up to a point where strange decisions where being made that forced the developer in an odd way
-        of working.</p>
-    <p>The facing out of @import which could be used once, as you would expect, to replace it with @use/@include which
-        causes the developer to continuously look for where some css resides, add a @use from there use @include to use
-        it. Then try to name it, rename it or figure out what name it has been given to use it agian. Then also the
-        @forward
-        is added and @extend and more... without keeping support for @import alive. There is no global scope anymore...
-    </p>
+  <h2>CSS Structure</h2>
+  <p>
+    The project follows a SMACSS-inspired layout (Base, Layout, Modules, State, Theme). We really like SMACSS —
+    it solves many CSS organization problems without being overly rigid. Try it; and if you don’t like it,
+    toss the folders and do your own thing — VanillaKit is flexible.
+  </p>
 
-    <p>A tool should make working with something (in this case CSS) easier, not more complicated.</p>
+  <h2>Plugin System (Planned)</h2>
+  <p>
+    An optional plugin system based on plain ES modules is planned. Plugins will follow a simple interface
+    (for example, exporting an <code>init()</code> function) so users can drop-in preprocessors, linters,
+    or other extensions without extra build steps.
+  </p>
 
-    <h2>What is with all the style folders?</h2>
+  <h2>Testing (Planned)</h2>
+  <p>
+    Upcoming plans include unit tests, UI/integration tests, and documentation on how to run and contribute tests.
+    This will help improve reliability and onboarding for contributors.
+  </p>
 
-    <p>The style folders take the (somewhat old fashioned) <a href="http://smacss.com" target="_self">SMACCS</a>
-        approach to structuring CSS.
-        This has been the most succesful way of working so far. <br>
-        The project advises against single-file components and suggest strongly separation of concern.</p>
+  <h2>Deployment</h2>
+  <p>
+    Deploying is trivial: simply copy the contents of the <code>/dist</code> folder to your web server — no additional
+    setup or <code>npm install</code> required. The app is ready to run immediately.
+  </p>
 
-    <h2>How to use this?</h2>
+  <h2>Contributing</h2>
+  <p>
+    Contributions, issues, and feature requests are welcome. Please open an issue or submit a pull request.
+    Keep changes small and focused.
+  </p>
 
-    <p>Checkout, replace all
-    <pre>`replace-with`</pre> in the code, replace favicon.ico,
-    <pre>npm install/run</pre> and happy coding.</p>
-
-    <p>The HTML, CSS, Javascript will be optimized and minimized.<br>
-        The assets (images, fonts etc..) will be encoded and packaged.</p>
-
-    <h2>Note about experience</h2>
-
-    <p>For an experienced engineer this project provides everything required, for a more junior engineer the stricter
-        rules
-        of an opiniated framework might be more suited.<br>
-        Since strict frameworks allow you to follow dictated steps to achieve something and requires less experience.
-    </p>
+  <h2>License</h2>
+  <p>MIT — see the <code>LICENSE</code> file for details.</p>
 </div>
