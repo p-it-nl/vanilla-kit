@@ -3,7 +3,7 @@
  * When this file grows big (e.g. > 250 lines) it is a good practice to separate modules into individual scss files.
  */
 
- .flag {
+.flag {
   background: url("../../assets/example.png") no-repeat top left;
   height: 127px;
   margin: 0 auto;
@@ -12,4 +12,24 @@
 
 .slogan .small {
   display: none;
+}
+
+.content {
+  font-family: system-ui, sans-serif;
+  line-height: 22px;
+
+  pre {
+    background: @quaternary-color;
+    padding: 12px;
+    border-radius: 4px;
+    overflow-x: auto;
+    font-size: 15px;
+  }
+
+  code {
+    background: @quaternary-color;
+    padding: 3px 6px;
+    border-radius: 3px;
+    font-family: ui-monospace, SFMono-Regular, monospace;
+  }
 }

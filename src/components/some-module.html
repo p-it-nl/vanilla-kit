@@ -1,29 +1,29 @@
 <div class="content">
-  <h1>VanillaKit</h1>
+    <h1>VanillaKit</h1>
 
-  <p><em>A lightweight, framework-less starter kit — vanilla JS, no node_modules bloat.</em></p>
+    <p><em>A lightweight, framework-less starter kit — vanilla JS, no node_modules bloat.</em></p>
 
-  <h2>Why VanillaKit?</h2>
-  <p>
-    The front-end ecosystem is full of massive frameworks and fast-moving libraries. Modern
-    JavaScript, CSS and HTML have advanced a lot in recent years, which makes many framework
-    conveniences possible without a heavy runtime. VanillaKit embraces that: keep what’s useful
-    (bundling, minification, live reload) and ditch what’s not (framework lock-in, bloated dependency trees).
-  </p>
+    <h2>Why VanillaKit?</h2>
+    <p>
+        The front-end ecosystem is full of massive frameworks and fast-moving libraries. Modern
+        JavaScript, CSS and HTML have advanced a lot in recent years, which makes many framework
+        conveniences possible without a heavy runtime. VanillaKit embraces that: keep what’s useful
+        (bundling, minification, live reload) and ditch what’s not (framework lock-in, bloated dependency trees).
+    </p>
 
-  <h2>Key Features</h2>
-  <ul>
-    <li>Framework-free — pure HTML, LESS, and vanilla JavaScript</li>
-    <li>Two modes — production (minified) &amp; debug (unminified)</li>
-    <li>Optional hot reload — works with a plain static server (no special dev server required)</li>
-    <li>Minimal dependencies — <code>lessc</code>, <code>clean-css-cli</code>, <code>esbuild</code></li>
-    <li>Cross-platform — Windows, macOS, Linux</li>
-    <li>Single HTML source — debug/prod paths injected at build time</li>
-    <li>Simple deployment — copy <code>/dist</code> to your server and you’re done</li>
-  </ul>
+    <h2>Key Features</h2>
+    <ul>
+        <li>Framework-free — pure HTML, LESS, and vanilla JavaScript</li>
+        <li>Two modes — production (minified) &amp; debug (unminified)</li>
+        <li>Optional hot reload — works with a plain static server (no special dev server required)</li>
+        <li>Minimal dependencies — <code>lessc</code>, <code>clean-css-cli</code>, <code>esbuild</code></li>
+        <li>Cross-platform — Windows, macOS, Linux</li>
+        <li>Single HTML source — debug/prod paths injected at build time</li>
+        <li>Simple deployment — copy <code>/dist</code> to your server and you’re done</li>
+    </ul>
 
-  <h2>Project Structure</h2>
-  <pre>
+    <h2>Project Structure</h2>
+    <pre>
 src/
   assets/        &nbsp;# images, fonts, etc.
   components/    &nbsp;# HTML partials / UI fragments
@@ -34,71 +34,73 @@ src/
 dist/            &nbsp;# build output
   </pre>
 
-  <h2>Installation</h2>
-  <p>Install the minimal build tools via the included script:</p>
-  <pre><code>sh install-deps.sh</code></pre>
-  <p>This installs the CLI tools used by the build: <code>lessc</code>, <code>clean-css-cli</code>, and <code>esbuild</code>.</p>
+    <h2>Installation</h2>
+    <p>Install the minimal build tools via the included script:</p>
+    <pre><code>sh install-deps.sh</code></pre>
+    <p>This installs the CLI tools used by the build: <code>lessc</code>, <code>clean-css-cli</code>, and
+        <code>esbuild</code>.</p>
 
-  <h2>Build</h2>
-  <p><strong>Production build (default)</strong></p>
-  <pre><code>sh build.sh</code></pre>
-  <p><strong>Debug build (development)</strong></p>
-  <pre><code>sh build.sh debug</code></pre>
+    <h2>Build</h2>
+    <p><strong>Production build (default)</strong></p>
+    <pre><code>sh build.sh</code></pre>
+    <p><strong>Debug build (development)</strong></p>
+    <pre><code>sh build.sh debug</code></pre>
 
-  <h2>Hot Reload (Development)</h2>
-  <p>Start file-watch + live-reload:</p>
-  <pre><code>sh watch.sh</code></pre>
-  <p>Then serve the dist folder:</p>
-  <pre><code>cd dist
+    <h2>Hot Reload (Development)</h2>
+    <p>Start file-watch + live-reload:</p>
+    <pre><code>sh watch.sh</code></pre>
+    <p>Then serve the dist folder:</p>
+    <pre><code>cd dist
 python -m http.server 3000
 </code></pre>
-  <p>Open <a href="http://localhost:3000">http://localhost:3000</a></p>
+    <p>Open <a href="http://localhost:3000">http://localhost:3000</a></p>
 
-  <h2>Philosophy</h2>
-  <p>
-    Frameworks were essential when browsers lacked features. Today, ES modules, modern CSS, async/await,
-    and other language improvements cover many needs. VanillaKit favors small, explicit build steps and
-    minimal tooling — full control without hidden magic.
-  </p>
+    <h2>Philosophy</h2>
+    <p>
+        Frameworks were essential when browsers lacked features. Today, ES modules, modern CSS, async/await,
+        and other language improvements cover many needs. VanillaKit favors small, explicit build steps and
+        minimal tooling — full control without hidden magic.
+    </p>
 
-  <h2>Why LESS?</h2>
-  <p>
-    LESS is lightweight and adds useful features (variables, nesting, mixins) without forcing heavy conventions.
-    It helps keep CSS maintainable without introducing unnecessary complexity.
-  </p>
+    <h2>Why LESS?</h2>
+    <p>
+        LESS is lightweight and adds useful features (variables, nesting, mixins) without forcing heavy conventions.
+        It helps keep CSS maintainable without introducing unnecessary complexity.
+    </p>
 
-  <h2>CSS Structure</h2>
-  <p>
-    The project follows a SMACSS-inspired layout (Base, Layout, Modules, State, Theme). We really like SMACSS —
-    it solves many CSS organization problems without being overly rigid. Try it; and if you don’t like it,
-    toss the folders and do your own thing — VanillaKit is flexible.
-  </p>
+    <h2>CSS Structure</h2>
+    <p>
+        The project follows a SMACSS-inspired layout (Base, Layout, Modules, State, Theme). We really like SMACSS —
+        it solves many CSS organization problems without being overly rigid. Try it; and if you don’t like it,
+        toss the folders and do your own thing — VanillaKit is flexible.
+    </p>
 
-  <h2>Plugin System (Planned)</h2>
-  <p>
-    An optional plugin system based on plain ES modules is planned. Plugins will follow a simple interface
-    (for example, exporting an <code>init()</code> function) so users can drop-in preprocessors, linters,
-    or other extensions without extra build steps.
-  </p>
+    <h2>Plugin System (Planned)</h2>
+    <p>
+        An optional plugin system based on plain ES modules is planned. Plugins will follow a simple interface
+        (for example, exporting an <code>init()</code> function) so users can drop-in preprocessors, linters,
+        or other extensions without extra build steps.
+    </p>
 
-  <h2>Testing (Planned)</h2>
-  <p>
-    Upcoming plans include unit tests, UI/integration tests, and documentation on how to run and contribute tests.
-    This will help improve reliability and onboarding for contributors.
-  </p>
+    <h2>Testing (Planned)</h2>
+    <p>
+        Upcoming plans include unit tests, UI/integration tests, and documentation on how to run and contribute tests.
+        This will help improve reliability and onboarding for contributors.
+    </p>
 
-  <h2>Deployment</h2>
-  <p>
-    Deploying is trivial: simply copy the contents of the <code>/dist</code> folder to your web server — no additional
-    setup or <code>npm install</code> required. The app is ready to run immediately.
-  </p>
+    <h2>Deployment</h2>
+    <p>
+        Deploying is trivial: simply copy the contents of the <code>/dist</code> folder to your web server — no
+        additional
+        setup or <code>npm install</code> required. The app is ready to run immediately.
+    </p>
 
-  <h2>Contributing</h2>
-  <p>
-    Contributions, issues, and feature requests are welcome. Please open an issue or submit a pull request.
-    Keep changes small and focused.
-  </p>
+    <h2>Contributing</h2>
+    <p>
+        Contributions, issues, and feature requests are welcome. Please open an issue or submit a pull request.
+        Keep changes small and focused.
+    </p>
 
-  <h2>License</h2>
-  <p>MIT — see the <code>LICENSE</code> file for details.</p>
+    <h2>License</h2>
+    <p>MIT — see the <code>LICENSE</code> file for details.</p>
 </div>

@@ -18,34 +18,43 @@ body {
 }
 
 h1 {
-  .regular-text();
-  font-size: 68px;
-  margin: 0 0 48px 0;
-  text-align: center;
+  font-size: 35px;
+  margin-bottom: 8px;
 }
 
 h2 {
-  .regular-text();
   font-size: 26px;
-  margin: 0 0 12px 0;
+  margin-top: 32px;
+  margin-bottom: 8px;
+}
+
+h3 {
+  font-size: 21px;
+  margin-top: 24px;
+  margin-bottom: 8px;
 }
 
 p {
-  .regular-text();
-  font-size: 14px;
-  line-height: 18px;
-  margin: 0 0 12px 0;
-}
-
-pre {
-  display: inline;
+  margin-bottom: 16px;
 }
 
 ul {
-  padding: 0 0 10px 20px;
+  padding-left: 24px;
+  margin-bottom: 16px;
 
+  li {
+    margin-bottom: 8px;
+  }
 }
- 
+
+a {
+  color: @quinary-color;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
 
 @import "../2.layout/layout.less";
 @import "../3.module/module.less";
