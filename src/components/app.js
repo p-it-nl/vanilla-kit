@@ -6,6 +6,10 @@ export default class App extends HTMLElement {
 
     constructor() {
         super();
+
+        if(window.__DEV__ === true) {
+            console.log('DEV mode');
+        }
     }
 
     /** Called when the component has been connected to the DOM */

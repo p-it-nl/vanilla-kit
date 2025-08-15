@@ -34,7 +34,12 @@ if [ "$mode" = "prod" ]; then
     echo "JavaScript bundled and minified."
 
     # Copy HTML
-    sed "s|{{CSS_PATH}}|./base.min.css|; s|{{JS_PATH}}|./bundle.min.js|; s|{{LIVE_RELOAD_SCRIPT}}||" src/index.html > dist/index.html
+    sed "\
+        s|{{CSS_PATH}}|./base.min.css|; \
+        s|{{JS_PATH}}|./bundle.min.js|; \
+        s|{{LIVE_RELOAD_SCRIPT}}||; \
+        s|{{DEV_MODE_SCRIPT}}||" \
+        src/index.html > dist/index.html
     echo "HTML copied."
 
     # Copy components
@@ -54,7 +59,12 @@ elif [ "$mode" = "debug" ]; then
     echo "JavaScript copied"
 
     # Copy HTML
-    sed "s|{{CSS_PATH}}|./base.css|; s|{{JS_PATH}}|./index.js|; s|{{LIVE_RELOAD_SCRIPT}}|<script type=\"module\" src=\"./livereload.js\"></script>|" src/index.html > dist/index.html
+    sed "\
+        s|{{CSS_PATH}}|./base.css|; \
+        s|{{JS_PATH}}|./index.js|; \
+        s|{{LIVE_RELOAD_SCRIPT}}|<script type=\"module\" src=\"./livereload.js\"></script>|; \
+        s|{{DEV_MODE_SCRIPT}}|<script>window.__DEV__ = true;</script>|" \
+    src/index.html > dist/index.html
     echo "HTML copied."
 
     # Copy components
