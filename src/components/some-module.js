@@ -1,7 +1,7 @@
 import { SomeFunctionality } from '../js/some-functionality.js';
 
 /**
- * The contact form component contains a form with form validation to enable sending a contact request.
+ * Some module
  */
 export default class SomeModule extends HTMLElement {
 
