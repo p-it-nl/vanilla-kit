@@ -3,7 +3,7 @@ import { SomeFunctionality } from '../js/some-functionality.js';
 /**
  * The contact form component contains a form with form validation to enable sending a contact request.
  */
-export default class ContactForm extends HTMLElement {
+export default class SomeModule extends HTMLElement {
 
     sf;
 
