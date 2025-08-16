@@ -1,9 +1,9 @@
 import { SomeFunctionality } from '../js/some-functionality.js';
 
 /**
- * Some module
+ * Home module
  */
-export default class SomeModule extends HTMLElement {
+export default class Home extends HTMLElement {
 
     sf;
 
@@ -15,7 +15,7 @@ export default class SomeModule extends HTMLElement {
 
     /** Called when the component has been connected to the DOM */
     async connectedCallback() {
-        const res = await fetch('./components/some-module.html');
+        const res = await fetch('./components/home.html');
         this.innerHTML = await res.text();
 
         this.sf.logSomething();

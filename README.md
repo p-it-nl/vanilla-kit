@@ -77,7 +77,10 @@ Outputs minified CSS/JS with assets into `/dist`.
 ```sh
 sh build.sh debug
 ```
-Outputs unminified CSS/JS for easier debugging.  
+Outputs unminified CSS/JS for easier debugging. 
+
+The debug build adds <code>window.__DEV__</code> which allows for development specific functionality.</p>
+For example: the router packaged in <strong>VanillaKit</strong> adds <code>#</code> to the navigation when in DEV mode</p>
 
 ---
 
@@ -137,6 +140,23 @@ We follow a [SMACSS](http://smacss.com)-inspired folder layout for styles:
 
 We really like SMACSS — it solves many common CSS organization challenges without being overly complicated or rigid. If you want a straightforward way to keep your styles scalable and maintainable, give SMACSS a go!
 And hey, if it’s not your thing, just toss the directories and do your own thing — this kit is flexible enough to roll with you.
+
+---
+
+## 🧭 Minimal Router  
+
+VanillaKit ships with an optional tiny, framework-free router that handles navigation without adding complexity.  
+It’s less than **100 lines of plain JavaScript** and supports:  
+
+- **Path-based routing** in production  
+- **Hash-based routing** in debug mode (so you don’t need server rewrites locally)  
+- **Dynamic routes with wildcards** (e.g. `/user/*`)  
+- **Automatic title updates** per route  
+- **Click delegation** with a simple `navigate` attribute  
+
+This gives you real client-side routing behavior — without React, Vue, or Angular — just a drop-in script that does the job.
+
+If you dont like it, just remove it or change it to you liking.
 
 ---
 

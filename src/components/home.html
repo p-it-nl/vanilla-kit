@@ -1,0 +1,141 @@
+<div class="content">
+    <h1>VanillaKit</h1>
+
+    <p><em>A lightweight, framework-less starter kit — vanilla JS, no node_modules bloat.</em></p>
+
+    <h2>Why VanillaKit?</h2>
+    <p>
+        The front-end ecosystem is full of massive frameworks with strict rules and short shelf lives.
+        But with modern JavaScript, CSS, and HTML features, many of those problems are already solved natively.
+    </p>
+    <p>
+        <strong>VanillaKit</strong> embraces that: keep what’s useful (bundling, minification, live reload) and ditch
+        what’s not (framework lock-in, massive node_modules).
+        Stay fast, transparent, and easy to tweak.
+    </p>
+
+    <h2>Key Features</h2>
+    <ul>
+        <li>Framework-free — pure HTML, CSS (LESS), and JS</li>
+        <li>Two modes — production (minified) &amp; debug (unminified) builds</li>
+        <li>Optional hot reload — without WebSockets or a custom dev server</li>
+        <li>Minimal dependencies — <code>lessc</code>, <code>clean-css-cli</code>, <code>esbuild</code></li>
+        <li>Cross-platform — works on Windows, macOS, Linux</li>
+        <li>One HTML source — auto-switches paths based on build mode</li>
+        <li>Clean builds — <code>/dist</code> rebuilt from scratch every time</li>
+    </ul>
+
+    <h2>Project Structure</h2>
+    <pre>
+src/
+  assets/        # Images, fonts, etc.
+  components/    # HTML partials / UI fragments
+  js/            # Application JavaScript
+  styles/        # LESS styles, SMACSS-style structure
+  index.html     # Single entry point with template variables
+
+dist/            # Build output
+  </pre>
+
+    <h2>Installation</h2>
+    <p>Install the minimal build tools via the included script:</p>
+    <pre><code>sh install-deps.sh</code></pre>
+    <p>This installs the CLI tools used by the build: <code>lessc</code>, <code>clean-css-cli</code>, and
+        <code>esbuild</code>.
+    </p>
+
+    <h2>Building</h2>
+    <p><strong>Production build (default)</strong></p>
+    <pre><code>sh build.sh</code></pre>
+    <p><strong>Debug build (development)</strong></p>
+    <pre><code>sh build.sh debug</code></pre>
+    <p>Outputs unminified CSS/JS for easier debugging.</p>
+    <p>The debug build adds <code>window.__DEV__</code> which allows for development specific functionality.</p>
+    <p>For example: the router packaged in <strong>VanillaKit</strong> adds <code>#</code> to the navigation when in DEV mode</p>
+
+    <h2>Hot Reload</h2>
+    <p>For development with auto-refresh:</p>
+    <pre><code>sh watch.sh</code></pre>
+    <p>Then run a simple static server in <code>/dist</code>, for example with Python:</p>
+    <pre><code>cd dist
+python -m http.server 3000
+</code></pre>
+    <p>Open <a href="http://localhost:3000">http://localhost:3000</a></p>
+
+    <h2>Philosophy</h2>
+    <p>
+        Frameworks were essential when browsers lacked features, but today:
+        ES modules, async/await, classes, and modern CSS cover most needs.
+        Framework dependency churn slows projects down.
+        Small, explicit build steps are easier to maintain than giant config files.
+    </p>
+    <p>
+        VanillaKit is for developers who want full control over their stack, minimal tooling, and no hidden magic.
+    </p>
+
+    <h2>Deployment Made Easy</h2>
+    <p>
+        VanillaKit’s minimal dependencies and straightforward build process mean you don’t need to run
+        <code>npm install</code> during deployment.
+        Simply copy the contents of the <code>/dist</code> folder to your web server — your app is ready to run
+        immediately.
+        Faster, more reliable, and less error-prone deployments.
+    </p>
+
+    <h2>Why LESS?</h2>
+    <p>
+        LESS adds missing features to CSS (variables, nesting, mixins) without forcing strange conventions or syntax
+        changes.
+        It’s powerful, lightweight, and doesn’t get in your way.
+    </p>
+
+    <h2>CSS Structure</h2>
+    <p>
+        We follow a <a href="http://smacss.com">SMACSS</a>-inspired folder layout for styles:
+        <strong>Base</strong> (resets, variables, typography),
+        <strong>Layout</strong> (grids, wrappers, page sections),
+        <strong>Modules</strong> (reusable UI parts),
+        <strong>State</strong> (temporary styles),
+        <strong>Theme</strong> (optional skinning).
+    </p>
+    <p>
+        SMACSS solves many CSS organization challenges without being overly complicated or rigid.
+        If it’s not your thing, just toss the directories and do your own — VanillaKit is flexible enough to roll with
+        you.
+    </p>
+
+    <h2>Router</h2>
+    <p>
+        VanillaKit includes an optional tiny client-side router — under 100 lines of code — that works without any
+        framework.
+        In development, it uses hash-based routing; in production, it switches to clean path-based URLs.
+        It supports wildcards, custom titles, back/forward navigation, and click delegation via a simple
+        <code>navigate</code> attribute.
+    </p>
+    <p>
+        This gives you just enough routing power for single-page apps without the complexity or overhead of a full
+        framework.
+    </p>
+    <p>
+        If you dont like it, just remove it or change it to you liking.
+    </p>
+    <p>
+        <button navigate="/other-page">test it here!</button>
+    </p>
+
+    <h2>Notes for Teams</h2>
+    <p>
+        For experienced engineers, VanillaKit offers flexibility and speed.
+        For juniors, a framework might still be a better choice until they’re more comfortable without enforced
+        patterns.
+    </p>
+
+    <h2>Contributing</h2>
+    <p>
+        Contributions, issues, and feature requests are welcome!
+        Please open an issue or submit a pull request. Keep changes small and focused.
+    </p>
+
+    <h2>License</h2>
+    <p>MIT — see the <code>LICENSE</code> file for details.</p>
+</div>
