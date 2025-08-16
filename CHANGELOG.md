@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 - Multi-segment routing support  
 - Testing setup (unit & integration)  
-- Additional router improvements (wildcard matching, route guards)  
+- Additional router improvements (wildcard matching, route guards, passing data)  
 - More documentation and examples  
 
 ## [1.0.1] - 2025-08-16
