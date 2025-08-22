@@ -2,7 +2,7 @@
 
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/p-it-nl/vanilla-kit)
 
-[See the v1.0.0 release notes](https://github.com/p-it-nl/vanilla-kit/releases/tag/v1.0.0)
+[See the v1.0.2 release notes](https://github.com/p-it-nl/vanilla-kit/releases/tag/v1.0.2)
 
 *A lightweight, framework-less starter kit — vanilla JS, no node_modules bloat*
 
