@@ -1,4 +1,6 @@
 import { SomeFunctionality } from '../js/some-functionality.js';
+import Binder from '../js/binder.js';
+import HtmlHelper from '../js/html-helper.js';
 
 /**
  * Home module
@@ -6,11 +8,13 @@ import { SomeFunctionality } from '../js/some-functionality.js';
 export default class Home extends HTMLElement {
 
     sf;
+    #binder;
 
     constructor() {
         super();
 
         this.sf = new SomeFunctionality();
+        this.#binder = new Binder(this, {});
     }
 
     /** Called when the component has been connected to the DOM */
@@ -19,6 +23,11 @@ export default class Home extends HTMLElement {
         this.innerHTML = await res.text();
 
         this.sf.logSomething();
+        this.#binder.setData({ valueOne: 'an input text', valueTwo: 'double click here!'});
+        this.#binder.bind();
+
+        const el = this.querySelector('[contenteditable]');
+        HtmlHelper.makeEditable(el);
     }
 
     /**

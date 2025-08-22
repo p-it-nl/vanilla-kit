@@ -51,7 +51,8 @@ dist/            # Build output
     <pre><code>sh build.sh debug</code></pre>
     <p>Outputs unminified CSS/JS for easier debugging.</p>
     <p>The debug build adds <code>window.__DEV__</code> which allows for development specific functionality.</p>
-    <p>For example: the router packaged in <strong>VanillaKit</strong> adds <code>#</code> to the navigation when in DEV mode</p>
+    <p>For example: the router packaged in <strong>VanillaKit</strong> adds <code>#</code> to the navigation when in DEV
+        mode</p>
 
     <h2>Hot Reload</h2>
     <p>For development with auto-refresh:</p>
@@ -122,6 +123,33 @@ python -m http.server 3000
     <p>
         <button navigate="/other-page">test it here!</button>
     </p>
+
+    <h2>Binder</h2>
+    <p>
+        VanillaKit includes a lightweight <code>Binder</code> class for <b>two-way data binding</b> between JavaScript
+        objects and DOM elements.
+        By simply adding <code>bind="key"</code> to elements in your templates, the Binder keeps the DOM in sync with
+        your data object automatically.
+        It supports text, input <code>value</code>, and <code>contentEditable</code> elements, including a smooth
+        double-click editing UX with auto-commit on blur or click-away.
+        This allows you to manage interactive UI elements without any external framework or boilerplate code, while
+        keeping your templates clean and declarative.
+    </p>
+    <p>
+        If you dont like it, just remove it or change it to you liking.
+    </p>
+    <div class="line">
+        <input bind="valueOne" name="value" />
+        <div class="value">
+            <span>Current value: </span>
+            <span bind="valueOne"></span>
+        </div>
+        <div bind="valueTwo" class="highlight" contenteditable="false"></div>
+        <div class="value">
+            <span>Current value: </span>
+            <span bind="valueTwo"></span>
+        </div>
+    </div>
 
     <h2>Notes for Teams</h2>
     <p>

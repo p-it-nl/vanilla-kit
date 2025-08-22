@@ -160,6 +160,17 @@ If you dont like it, just remove it or change it to you liking.
 
 ---
 
+## 🔗 Binder
+
+VanillaKit includes a lightweight `Binder` class for **two-way data binding** between JavaScript objects and DOM elements.  
+By simply adding `bind="key"` to elements in your templates, the Binder keeps the DOM in sync with your data object automatically.  
+It supports text, input `value`, and `contentEditable` elements, including a smooth double-click editing UX with auto-commit on blur or click-away.  
+This allows you to manage interactive UI elements without any external framework or boilerplate code, while keeping your templates clean and declarative.
+
+If you dont like it, just remove it or change it to you liking.
+
+---
+
 ## 📢 Notes for Teams  
 
 For experienced engineers, VanillaKit offers flexibility and speed.  
