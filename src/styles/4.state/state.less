@@ -12,3 +12,17 @@
         opacity: 0.8;
     }
 }
+
+[when-editing] {
+    display: none;
+
+    &.editing {
+        display: block;
+    }
+}
+
+[not-editing] {
+    &.editing {
+        display: none;
+    }
+}

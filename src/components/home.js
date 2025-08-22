@@ -23,11 +23,14 @@ export default class Home extends HTMLElement {
         this.innerHTML = await res.text();
 
         this.sf.logSomething();
-        this.#binder.setData({ valueOne: 'an input text', valueTwo: 'double click here!'});
+        this.#binder.setData({ valueOne: 'an input text', valueTwo: 'double click here!', valueThree: 'double click here!' });
         this.#binder.bind();
 
-        const el = this.querySelector('[contenteditable]');
-        HtmlHelper.makeEditable(el);
+        const els = this.querySelectorAll('[contenteditable], [not-editing]');
+        console.log(els);
+        for (const el of els) {
+            HtmlHelper.makeEditable(el);
+        }
     }
 
     /**

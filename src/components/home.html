@@ -138,16 +138,26 @@ python -m http.server 3000
     <p>
         If you dont like it, just remove it or change it to you liking.
     </p>
+    <h4>Test it here!</h4>
+    <hr />
     <div class="line">
         <input bind="valueOne" name="value" />
         <div class="value">
             <span>Current value: </span>
             <span bind="valueOne"></span>
         </div>
+        <hr />
         <div bind="valueTwo" class="highlight" contenteditable="false"></div>
         <div class="value">
             <span>Current value: </span>
             <span bind="valueTwo"></span>
+        </div>
+        <hr />
+        <div class="value" bind="valueThree" not-editing></div>
+        <input class="value" bind="valueThree" name="valueThree" type="text" when-editing />
+        <div class="value">
+            <span>Current value</span>
+            <span bind="valueThree"></span>
         </div>
     </div>
 
