@@ -23,9 +23,6 @@ import { routes } from "./routes.js";
  */
 export default class Router {
 
-    #navigateAttr = 'navigate';
-    #notFound = '/404';
-    #rootId = 'root';
     #initialized = false;
 
     #isDev;
@@ -41,7 +38,7 @@ export default class Router {
         if (!this.#initialized) {
             this.#initialized = true;
 
-            this.#root = document.getElementById(this.#rootId);
+            this.#root = document.getElementById('root');
             this.#fallbackTitle = document.title;
 
             // Navigation clicks
@@ -87,10 +84,10 @@ export default class Router {
      * @param {MouseEvent} e - The click event.
      */
     #handleClick(e) {
-        const el = e.target.closest(`[${this.#navigateAttr}]`);
+        const el = e.target.closest('[navigate]');
         if (el) {
             e.preventDefault();
-            this.navigate(el.getAttribute(this.#navigateAttr));
+            this.navigate(el.getAttribute('navigate'));
         }
     }
 
@@ -121,7 +118,7 @@ export default class Router {
             }
         }
 
-        return routes.get(this.#notFound);
+        return routes.get('/404');
     }
 
     /**

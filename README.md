@@ -169,6 +169,18 @@ This allows you to manage interactive UI elements without any external framework
 
 If you dont like it, just remove it or change it to you liking.
 
+--
+
+## 🧪 Testing
+
+VanillaKit encourages lightweight, framework-free testing using **Node’s built-in test runner**. Simply create `*.test.js` file anywhere and use `import test from 'node:test'` along with `import assert from 'node:assert'` for assertions. Run all tests with:
+
+```bash
+node --test
+```
+
+See `src/js/calculator.test.js` for a working example.  
+
 ---
 
 ## 📢 Notes for Teams  
