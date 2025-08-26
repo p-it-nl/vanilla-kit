@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert';
-import Calculator from './calculator.js';
+import Calculator from '../js/calculator.js';
 
 test('Calculator.add() should add numbers', () => {
     assert.strictEqual(Calculator.add(2, 3), 5);
