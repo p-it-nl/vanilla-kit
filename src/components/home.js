@@ -27,7 +27,6 @@ export default class Home extends HTMLElement {
         this.#binder.bind();
 
         const els = this.querySelectorAll('[contenteditable], [not-editing]');
-        console.log(els);
         for (const el of els) {
             HtmlHelper.makeEditable(el);
         }
