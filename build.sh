@@ -35,8 +35,8 @@ if [ "$mode" = "prod" ]; then
 
     # Copy HTML
     sed "\
-        s|{{CSS_PATH}}|./base.min.css|; \
-        s|{{JS_PATH}}|./bundle.min.js|; \
+        s|{{CSS_PATH}}|/base.min.css|; \
+        s|{{JS_PATH}}|/bundle.min.js|; \
         s|{{LIVE_RELOAD_SCRIPT}}||; \
         s|{{DEV_MODE_SCRIPT}}||" \
         src/index.html > dist/index.html
