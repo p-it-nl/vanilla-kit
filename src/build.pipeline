@@ -1,0 +1,64 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone ') {
+            steps {
+               // git url: 'your git url'
+            }
+		}
+		
+		stage('Prepare') {
+		    steps {
+                sh './install-deps.sh || { echo "Install failed"; exit 1; }'
+		    }
+		}
+        
+        stage('Test') { 
+            steps {
+                sh 'node --test' 
+            }
+        }
+
+		stage('Build - test') {
+		    steps {
+			   sh './build.sh test'
+		    }
+		}
+		
+	   stage('Optional - clean - test') {
+		    steps {
+			    sh 'ssh user@yourtestserver " rm -rf {deployed location}; mkdir {deployed location};"'
+		    }
+		}
+
+		stage('Deploy - test') {
+		    steps {
+		        sh 'your deployment command (e.g. rsync over ssh)'
+		    }
+		}
+		
+		stage('Build - acc') {
+		    steps {
+			   sh './build.sh acc'
+		    }
+		}
+		
+	   stage('Optional - clean - acc') {
+		    steps {
+			    sh 'ssh user@yourtestserver " rm -rf {deployed location}; mkdir {deployed location};"'
+		    }
+		}
+
+		stage('Deploy - acc') {
+		    steps {
+		        sh 'your deployment command (e.g. rsync over ssh)'
+		    }
+		}
+    }
+    post { 
+        always { 
+            deleteDir()
+       }
+    }
+}

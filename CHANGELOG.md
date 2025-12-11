@@ -4,12 +4,28 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-- Testing setup (unit & integration)  
-- router - multi-segment routing support  
-- router - improvements (wildcard matching, route guards, passing data)  
-- More documentation and examples  
-- binder - Support for array/repeated templates (e.g., `for`-like binding) in Binder  
-- binder - Optional value formatters or transformers for bound data (e.g., uppercase, currency)
+- Testing - setup for integration testing  
+- General - multi language support and translations
+
+## [2.0.0] - [Unreleased - in progress]
+
+- Testing - setup for unit testing  
+- Router - multi-segment routing support and improvements: wildcard matching and passing data
+- Router - change made to enforce only one instance of router
+- Router - add mutation observer for objects that are dynamically added and have a navigation attribute
+- Binder - Optional value formatters or transformers for checkbox, radio, select, multiselect, date and arrays
+- Evaluator - allows show-if and class-if conditional attributes
+- Animation - basic animation added (linear)
+- General - add HTML loader that caches already loaded HTML
+- General - indication for element loading and loaded
+- General - improve component integration
+- General - add structure indication to components to show best practises (e.g. ondisconnected callback) 
+- General - more documentation and examples
+- Demo - reworked starter page to a full fledge webshop demo showing the power of VanillaKit
+- Data - first implementation of data exchange including retrieving additional information on actie (e.g. opening select) and web service interaction
+- Environment - allow environment configuration more
+- Environment - optimize build 
+- Environment - add example pipeline script for reference (usable in Jenkins but can also be used manualy or transformed easely for any other CI/CD options)
 
 ## [1.0.2] - 2025-08-22
 

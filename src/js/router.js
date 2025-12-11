@@ -3,9 +3,6 @@ import { routes } from "./routes.js";
 /**
  * Router
  * 
- * Automatically allows navigation from elements having the `navigate` attribute.
- * e.g.: <button navigate="/home"></button> will automatically allow navigating to the home page
- * 
  * Features:
  * - Hash-based routing in dev, path-based in other environments.
  * - Wildcard support for trailing route parameters (currently: single segment only).
@@ -19,15 +16,18 @@ import { routes } from "./routes.js";
  * - Optional click debounce or dataset marking for large clickable lists.
  * - Support multiple `{}` placeholders in title templates.
  * - Optional nested route parameters for more complex paths.
- * - Add unit tests
  */
-export default class Router {
+class Router {
+
+    // __data: internal navigation payload, hidden and unique via Symbol to avoid collisions
+    static __data = Symbol('navigationData');
 
     #initialized = false;
 
     #isDev;
     #fallbackTitle;
     #currentPage;
+    #observer;
     #root;
 
     /**
@@ -45,12 +45,13 @@ export default class Router {
             document.addEventListener('click', this.#handleClick.bind(this));
 
             // Browser forward/backward
-            window.addEventListener(this.#isDev ? 'hashchange' : 'popstate', () => {
-                this.navigate(this.#getCurrentPath(), true);
+            window.addEventListener('popstate', () => {
+                this.navigate(this.#getCurrentPath(), null, true);
             });
 
             // Current path on init
-            this.navigate(this.#getCurrentPath(), true);
+            this.#initObserver();
+            this.navigate(this.#getCurrentPath(), null, true);
         } else {
             // preventing duplicate initialization
         }
@@ -58,51 +59,67 @@ export default class Router {
 
     /**
      * Navigate to a given path
-     * @param {string} path 
-     * @param {boolean} backPressed 
+     * @param {string} path the path to navigate to 
+     * @param {any} data the data to pass the component that is created
+     * @param {boolean} backPressed whether back button of the browser was pressed
      */
-    navigate(path, backPressed = false) {
+    navigate(path, data, backPressed = false) {
+        path = path ?? '/';
         const renderPath = this.#normalizePath(path);
         if (this.#currentPage !== renderPath) {
             this.#currentPage = renderPath;
 
             const { component, title, param } = this.#matchRoute(renderPath) || {};
-            this.#render(component, title, param);
+            this.#render(component, title, param, data);
+            this.#setActive(renderPath);
 
             if (!backPressed) {
                 const url = this.#isDev && renderPath !== '/' ? `#${renderPath}` : renderPath;
-                history.pushState({}, '', url);
+                history.pushState({ path: renderPath }, '', url);
             }
         } else {
             // current page is requested, preventing duplicate render
         }
     }
 
-    /**
-     * Handle click events on elements with the `navigate` attribute.
-     * Prevents default link behavior and triggers navigation.
-     * @param {MouseEvent} e - The click event.
-     */
+    #initObserver() {
+        // WARNING! costly! only listen for very specific changes currently listening only for adding of navigate attributes
+        this.#observer = new MutationObserver(mutations => {
+            for (const m of mutations) {
+                if (m.type === 'attributes' && m.attributeName === 'navigate') {
+                    this.#processNavigateElement(m.target);
+                }
+            }
+        });
+
+        this.#observer.observe(document.body, {
+            subtree: true,
+            attributes: true,
+            attributeFilter: ['navigate']
+        });
+    }
+
+    #processNavigateElement(el) {
+        const path = el.getAttribute('navigate');
+        if (path === this.#currentPage) {
+            el.classList.add('active');
+        }
+    }
+
     #handleClick(e) {
         const el = e.target.closest('[navigate]');
         if (el) {
             e.preventDefault();
-            this.navigate(el.getAttribute('navigate'));
+            const data = el[Router.__data];
+            const navigationValue = this.#normalizeUrl(el.getAttribute('navigate'));
+            this.navigate(navigationValue, data, false);
         }
     }
 
-    /**
-     * Get the current path depending on dev/prod mode
-     */
     #getCurrentPath() {
         return this.#isDev ? location.hash.slice(1) || '/' : location.pathname;
     }
 
-    /**
-     * Match a path to the defined routes, support wildcards
-     * @param {string} path 
-     * @returns {object} { component, title, param }
-     */
     #matchRoute(path) {
         if (routes.has(path)) {
             return routes.get(path);
@@ -121,31 +138,42 @@ export default class Router {
         return routes.get('/404');
     }
 
-    /**
-     * Normalize path (remove trailing slashes, hash in dev)
-     * @param {string} path 
-     * @returns {string}
-     */
-    #normalizePath(path = '/') {
-        path = path.replace(/\/+$/, '') || '/';
-        if (this.#isDev) {
-            path = path.replace(/^#+/, '').replace(/^#/, '');
+    #normalizeUrl(url) {
+        if (url) {
+            const protoIndex = url.indexOf('://');
+            if (protoIndex !== -1) {
+                const pathStart = url.indexOf('/', protoIndex + 3);
+                return pathStart !== -1 ? url.slice(pathStart) : '/';
+            }
         }
+
+        return url;
+    }
+
+    #trimTrailingSlash(path) {
+        return path.length > 1 && path.endsWith('/')
+            ? this.#trimTrailingSlash(path.slice(0, -1))
+            : path;
+    }
+
+    #normalizePath(path = '/') {
+        path = this.#trimTrailingSlash(path) || '/';
+
+        if (this.#isDev && path.startsWith('#')) {
+            path = path.slice(path.lastIndexOf('#') + 1);
+        }
+
         return path;
     }
 
-    /**
-     * Render the given component inside the root element
-     * @param {string} component 
-     * @param {string} title 
-     * @param {string} param 
-     */
-    #render(component, title, param) {
+    #render(component, title, param, data) {
         if (component) {
             document.title = title ? title.replace('{}', param || '') : this.#fallbackTitle;
 
             if (customElements.get(component)) {
-                this.#root.replaceChildren(document.createElement(component));
+                const el = document.createElement(component);
+                if (data !== undefined) el[Router.__data] = data;
+                this.#root.replaceChildren(el);
             } else {
                 console.warn(`Component "${component}" not registered`);
             }
@@ -153,4 +181,12 @@ export default class Router {
             console.warn(`Component not provided, validate the routes!`);
         }
     }
+
+    #setActive(path) {
+        document.querySelectorAll('[navigate].active').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll(`[navigate="${path}"]`).forEach(el => el.classList.add('active'));
+    }
 }
+
+/** Singleton instance shared across components */
+export default new Router();

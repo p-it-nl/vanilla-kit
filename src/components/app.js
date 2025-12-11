@@ -1,26 +1,35 @@
-import Router from '../js/router.js';
+import appRouter from '../js/router.js';
+import htmlLoader from '../js/html-loader.js';
 
 /**
  * The app components consists of the main screen of the website and is registered as the app-root
  */
 export default class App extends HTMLElement {
 
-    constructor() {
-        super();
+    #htmlLoader;
+    #router;
 
-        if(window.__DEV__ === true) {
+    constructor(loader = htmlLoader, router = appRouter) {
+        super();
+        this.#htmlLoader = loader;
+        this.#router = router;
+
+        if (window.__DEV__ === true) {
             console.log('DEV mode');
         }
     }
 
     /** Called when the component has been connected to the DOM */
     async connectedCallback() {
-        const res = await fetch('./components/app.html');
-        this.innerHTML = await res.text();
-        
-        new Router().init();
+        await this.#loadHTML();
     }
 
+    async #loadHTML() {
+        const html = await this.#htmlLoader.load('./components/app.html');
+        this.innerHTML = html;
+
+        this.#router.init();
+    }
 
     /**
      * YOUR CODE ----

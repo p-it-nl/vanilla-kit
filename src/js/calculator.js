@@ -1,5 +1,7 @@
 
-
+/**
+ * Just a simple calculator used as example
+ */
 export default class Calculator {
     static add(a, b) {
         return a + b;

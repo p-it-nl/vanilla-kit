@@ -6,6 +6,9 @@
 
 *A lightweight, framework-less starter kit — vanilla JS, no node_modules bloat*
 
+TODO: Explain its the Magnus opus of over 10 years of front-end development
+TODO: less AI like readme
+
 **VanillaKit** is a minimal build setup for modern front-end applications — no frameworks, no bloat, just HTML, CSS, and JavaScript with a lean build pipeline.
 It’s designed for developers who want the power of modern JS features without the complexity of heavy frameworks or sprawling dependency trees.
 

@@ -8,7 +8,7 @@ while true; do
   CURRENT=$(find src -type f -newermt "@$LAST_CHECK" | head -n 1 || true)
   if [ -n "$CURRENT" ]; then
     echo "Change detected: $CURRENT"
-    ./build.sh debug
+    ./build.sh local
     LAST_CHECK=$(date +%s)
   fi
   sleep 2

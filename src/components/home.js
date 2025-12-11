@@ -1,28 +1,26 @@
-import { SomeFunctionality } from '../js/some-functionality.js';
 import Binder from '../js/binder.js';
 import HtmlHelper from '../js/html-helper.js';
+import htmlLoader from '../../js/html-loader.js';
 
 /**
  * Home module
  */
 export default class Home extends HTMLElement {
 
-    sf;
     #binder;
+    #htmlLoader;
 
-    constructor() {
+    constructor(loader = htmlLoader) {
         super();
 
-        this.sf = new SomeFunctionality();
         this.#binder = new Binder(this, {});
+        this.#htmlLoader = loader;
     }
 
     /** Called when the component has been connected to the DOM */
     async connectedCallback() {
-        const res = await fetch('./components/home.html');
-        this.innerHTML = await res.text();
+        await this.#loadHTML();
 
-        this.sf.logSomething();
         this.#binder.setData({ valueOne: 'an input text', valueTwo: 'double click here!', valueThree: 'double click here!' });
         this.#binder.bind();
 
@@ -30,6 +28,21 @@ export default class Home extends HTMLElement {
         for (const el of els) {
             HtmlHelper.makeEditable(el);
         }
+    }
+
+    disconnectedCallback() {
+        if (this.#binder) {
+            this.#binder.destroy?.();
+            this.#binder = null;
+        }
+
+        HtmlHelper.stopEditing();
+        this.#htmlLoader = null;
+    }
+
+    async #loadHTML() {
+        const html = await this.#htmlLoader.load('./components/not-found.html');
+        this.innerHTML = html;
     }
 
     /**

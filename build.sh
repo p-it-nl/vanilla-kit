@@ -1,6 +1,5 @@
 #!/bin/sh
 
-# Exit immediately if a command fails
 set -e
 
 mode=${1:-prod} # default to prod
@@ -22,10 +21,10 @@ cp -r src/assets/ dist/assets/
 cp src/favicon.ico dist/favicon.ico
 echo "Assets copied."
 
-if [ "$mode" = "prod" ]; then
-    echo "Adjusting for PRODUCTION build..."
+if [ "$mode" = "prod" ] || [ "$mode" = "acc" ]; then
+    echo "Adjusting for ${mode^^} optimized build..."
 
-    # Compile LESS and minify CSS in one step
+    # Compile LESS and minify CSS
     lessc src/styles/1.base/base.less | cleancss -o dist/base.min.css
     echo "LESS compiled and CSS minified."
 
@@ -46,10 +45,10 @@ if [ "$mode" = "prod" ]; then
     mkdir -p dist/components
     cp src/components/*.html dist/components
     echo "Components copied."
-elif [ "$mode" = "debug" ]; then
-    echo "Adjusting for DEBUG build..."
+else
+    echo "Adjusting for ${mode^^} unoptimized build..."
     
-    # Compile LESS and minify CSS in one step
+    # Compile LESS
     lessc src/styles/1.base/base.less > dist/base.css
     echo "LESS compiled"
 
@@ -71,9 +70,17 @@ elif [ "$mode" = "debug" ]; then
     cp -r src/components/ dist/components
     echo "Components copied."
 
-    # Copy livereload script
-    cp -r src/livereload.js dist/livereload.js
-    echo "Livereload script copied."
+    if [ "$mode" = "local" ]; then
+        # Copy livereload script
+        cp -r src/livereload.js dist/livereload.js
+        echo "Livereload script copied."
+    fi
+fi
+
+# Reset configuration to LOCAL for non-local builds
+if [ "$mode" != "local" ]; then
+    cp "src/js/configuration/configuration-local.js" "src/js/configuration.js"
+    echo "Reset configuration to LOCAL after build"
 fi
 
 date +%s > dist/.lastbuild
