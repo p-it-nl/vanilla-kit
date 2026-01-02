@@ -57,10 +57,11 @@ export default class Binder {
             const elements = this.#container.querySelectorAll('[bind]');
             for (const el of elements) {
                 const key = el.getAttribute('bind');
-                const labelClass = this.#data.labelClass;
-                if (key === 'key' && labelClass) {
-                    el.className = `${el.className} ${labelClass}`;
-                }
+                // below is a relic from some brain fart
+                //const labelClass = this.#data.labelClass;
+                //if (key === 'key' && labelClass) {
+                //   el.className = `${el.className} ${labelClass}`;
+                //}
                 el.removeAttribute('bind');
 
                 const HandlerClass = this.#handlers.find(h => h.ifFor(el));
