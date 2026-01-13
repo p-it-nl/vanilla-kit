@@ -24,6 +24,8 @@ But with modern JavaScript, CSS, and HTML features, many of those problems are a
 - Ditch what’s not (framework lock-in, massive node_modules)  
 - Stay fast, transparent, and easy to tweak  
 
+Everything is explicit, nothing hides from you.
+
 ---
 
 ## 🔑 Features  

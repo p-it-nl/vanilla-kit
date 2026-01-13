@@ -29,7 +29,7 @@ if [ "$mode" = "prod" ] || [ "$mode" = "acc" ]; then
     echo "LESS compiled and CSS minified."
 
     # Bundle & minify JS
-    esbuild src/index.js --bundle --minify --outfile=dist/bundle.min.js
+    esbuild src/index.js --bundle --minify --drop:console --outfile=dist/bundle.min.js
     echo "JavaScript bundled and minified."
 
     # Copy HTML
@@ -59,8 +59,8 @@ else
 
     # Copy HTML
     sed "\
-        s|{{CSS_PATH}}|./base.css|; \
-        s|{{JS_PATH}}|./index.js|; \
+        s|{{CSS_PATH}}|/base.css|; \
+        s|{{JS_PATH}}|/index.js|; \
         s|{{LIVE_RELOAD_SCRIPT}}|<script type=\"module\" src=\"./livereload.js\"></script>|; \
         s|{{DEV_MODE_SCRIPT}}|<script>window.__DEV__ = true;</script>|" \
     src/index.html > dist/index.html
