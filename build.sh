@@ -58,12 +58,21 @@ else
     echo "JavaScript copied"
 
     # Copy HTML
+    if [ "$mode" = "local" ]; then
+        DEV_MODE_SCRIPT='<script>window.__DEV__ = true;</script>'
+        LIVE_RELOAD='<script type=\"module\" src=\"./livereload.js\"></script>'
+    else
+        DEV_MODE_SCRIPT=''
+        LIVE_RELOAD=''
+    fi
+
     sed "\
         s|{{CSS_PATH}}|/base.css|; \
         s|{{JS_PATH}}|/index.js|; \
-        s|{{LIVE_RELOAD_SCRIPT}}|<script type=\"module\" src=\"./livereload.js\"></script>|; \
-        s|{{DEV_MODE_SCRIPT}}|<script>window.__DEV__ = true;</script>|" \
+        s|{{LIVE_RELOAD_SCRIPT}}|$LIVE_RELOAD|; \
+        s|{{DEV_MODE_SCRIPT}}|$DEV_MODE_SCRIPT|;" \
     src/index.html > dist/index.html
+
     echo "HTML copied."
 
     # Copy components
