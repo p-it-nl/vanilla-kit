@@ -2,14 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
-
-- Testing - setup for integration testing  
-- General - multi language support and translations
-
-## [2.0.0] - [Unreleased - in progress]
+## [2.0.0] - 25-02-2026
 
 - Testing - setup for unit testing  
+- Testing - setup for integration testing  
 - Router - multi-segment routing support and improvements: wildcard matching and passing data
 - Router - change made to enforce only one instance of router
 - Router - add mutation observer for objects that are dynamically added and have a navigation attribute
@@ -26,8 +22,9 @@ All notable changes to this project will be documented in this file.
 - Environment - allow environment configuration more
 - Environment - optimize build 
 - Environment - add example pipeline script for reference (usable in Jenkins but can also be used manualy or transformed easely for any other CI/CD options)
+- Example - add project board example
 
-## [1.0.2] - 2025-08-22
+## [1.0.2] - 22-08-2025
 
 - Added `Binder` class for two-way data binding between objects and DOM elements  
 - Introduced `bind="key"` attribute for declarative binding in templates  
@@ -37,13 +34,13 @@ All notable changes to this project will be documented in this file.
 - Improved lifecycle handling: Binder now initialized after template load  
 - Updated documentation to reflect new data binding and editable element features
 
-## [1.0.1] - 2025-08-16
+## [1.0.1] - 16-08-2025
 
 - Added lightweight client-side router (hash-based) for SPA-style navigation  
 - Improved README and documentation, including router usage  
 - Updated build scripts with clearer dev/prod mode handling  
 - Minor cleanup and refinements in code and structure  
 
-## [1.0.0] - 2025-08-08
+## [1.0.0] - 08-08-2025
 
 - First official release of VanillaKit

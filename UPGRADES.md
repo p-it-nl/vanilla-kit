@@ -18,3 +18,7 @@ To run the tests point the `NODE_PATH` to the location Selenium has been install
 
 After that you can run the tests with:
 `node {path to your folder}/{filename}.js`
+
+## Use VanillaKit in JavaFX webview (with hot reloading)
+
+TODO: Explain

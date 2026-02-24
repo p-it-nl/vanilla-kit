@@ -1,4 +1,4 @@
-import Binder from '../js/binder.js';
+import Binder from '../js/binder/binder.js';
 import HtmlHelper from '../js/html-helper.js';
 import htmlLoader from '../../js/html-loader.js';
 
@@ -36,12 +36,11 @@ export default class Home extends HTMLElement {
             this.#binder = null;
         }
 
-        HtmlHelper.stopEditing();
         this.#htmlLoader = null;
     }
 
     async #loadHTML() {
-        const html = await this.#htmlLoader.load('./components/not-found.html');
+        const html = await this.#htmlLoader.load('./components/home.html');
         this.innerHTML = html;
     }
 

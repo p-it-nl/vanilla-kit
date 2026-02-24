@@ -9,7 +9,8 @@
         But with modern JavaScript, CSS, and HTML features, many of those problems are already solved natively.
     </p>
     <p>
-        <strong>VanillaKit</strong> embraces that: keep what’s useful (bundling, minification, live reload) and ditch
+        <strong>VanillaKit</strong> embraces that: keep what’s useful (bundling, minification, live reload) and
+        ditch
         what’s not (framework lock-in, massive node_modules).
         Stay fast, transparent, and easy to tweak.
     </p>
@@ -24,6 +25,10 @@
         <li>One HTML source — auto-switches paths based on build mode</li>
         <li>Clean builds — <code>/dist</code> rebuilt from scratch every time</li>
     </ul>
+
+    <h2>Examples</h2>
+
+    <button navigate="/board">Project board</button>
 
     <h2>Project Structure</h2>
     <pre>
@@ -51,7 +56,8 @@ dist/            # Build output
     <pre><code>sh build.sh debug</code></pre>
     <p>Outputs unminified CSS/JS for easier debugging.</p>
     <p>The debug build adds <code>window.__DEV__</code> which allows for development specific functionality.</p>
-    <p>For example: the router packaged in <strong>VanillaKit</strong> adds <code>#</code> to the navigation when in DEV
+    <p>For example: the router packaged in <strong>VanillaKit</strong> adds <code>#</code> to the navigation when in
+        DEV
         mode</p>
 
     <h2>Hot Reload</h2>
@@ -101,7 +107,8 @@ python -m http.server 3000
     </p>
     <p>
         SMACSS solves many CSS organization challenges without being overly complicated or rigid.
-        If it’s not your thing, just toss the directories and do your own — VanillaKit is flexible enough to roll with
+        If it’s not your thing, just toss the directories and do your own — VanillaKit is flexible enough to roll
+        with
         you.
     </p>
 
@@ -126,9 +133,11 @@ python -m http.server 3000
 
     <h2>Binder</h2>
     <p>
-        VanillaKit includes a lightweight <code>Binder</code> class for <b>two-way data binding</b> between JavaScript
+        VanillaKit includes a lightweight <code>Binder</code> class for <b>two-way data binding</b> between
+        JavaScript
         objects and DOM elements.
-        By simply adding <code>bind="key"</code> to elements in your templates, the Binder keeps the DOM in sync with
+        By simply adding <code>bind="key"</code> to elements in your templates, the Binder keeps the DOM in sync
+        with
         your data object automatically.
         It supports text, input <code>value</code>, and <code>contentEditable</code> elements, including a smooth
         double-click editing UX with auto-commit on blur or click-away.
@@ -163,13 +172,15 @@ python -m http.server 3000
 
     <h2>Testing</h2>
     <p>
-        VanillaKit encourages lightweight, framework-free testing using **Node’s built-in test runner**. Simply create
-        `*.test.js` file anywhere and use `import test from 'node:test'` along with `import assert from 'node:assert'`
+        VanillaKit encourages lightweight, framework-free testing using **Node’s built-in test runner**. Simply
+        create
+        `*.test.js` file anywhere and use `import test from 'node:test'` along with `import assert from
+        'node:assert'`
         for assertions. Run all tests with:
     </p>
     <pre><code>node --test</code></pre>
     <p>
-    See <code>`src/tests/calculator.test.js`</code> for an working example.
+        See <code>`src/tests/calculator.test.js`</code> for an working example.
     </p>
 
     <h2>Notes for Teams</h2>

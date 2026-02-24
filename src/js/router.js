@@ -38,7 +38,7 @@ class Router {
         if (!this.#initialized) {
             this.#initialized = true;
 
-            this.#root = document.getElementById('root');
+            this.#root = document.querySelector('app-root');
             this.#fallbackTitle = document.title;
 
             // Navigation clicks
