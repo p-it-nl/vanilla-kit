@@ -12,12 +12,13 @@ To add selenium to the project, add the following line to `install-deps.sh`:
     `npm install (optional: -g) selenium-webdriver`
 
 Then make a folder somewhere in your working directory and add your selenium tests there.
-TODO: commit folder with examples
 
 To run the tests point the `NODE_PATH` to the location Selenium has been installed, incase of global install use `export NODE_PATH="$(npm root -g)"`.
 
 After that you can run the tests with:
 `node {path to your folder}/{filename}.js`
+
+Run `./smoke.sh` to see the smoke test in action for this project
 
 ## Use VanillaKit in JavaFX webview (with hot reloading)
 
