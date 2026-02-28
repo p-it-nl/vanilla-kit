@@ -246,6 +246,26 @@ test('Evaluator.evaluateConditions adds and removes class correctly', () => {
     assert.ok(!el.classList.contains('active'));
 });
 
+test('Evaluator.evaluateConditionsWithin evaluates element and matching children', () => {
+    const root = new MockElement();
+    const child = new MockElement();
+
+    root.setAttribute('show-if', 'isRootVisible === true');
+    child.setAttribute('class-if', 'count > 1:active');
+
+    root.querySelectorAll = () => [child];
+
+    evaluator.evaluateConditionsWithin(root, { isRootVisible: true, count: 2 });
+
+    assert.ok(root.classList.contains('shown'));
+    assert.ok(child.classList.contains('active'));
+});
+
+test('Evaluator.evaluateExpression returns false for unsupported operators', () => {
+    const result = evaluator.evaluateExpression('x >= 5', { x: 5 });
+
+    assert.strictEqual(result, false);
+});
 
 test('resolvePath returns correct primitive value', () => {
     const data = { a: { b: 5 } };

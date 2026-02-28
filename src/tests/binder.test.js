@@ -160,6 +160,20 @@ test('Binder.getData returns current state after multiple updates', async () => 
     assert.deepStrictEqual(expected, value);
 });
 
+test('Binder.updateData passes container to onUpdate callback', async () => {
+    const container = { id: 'container' };
+    const binder = new Binder(container, { a: 1 });
+    let onUpdateContainer;
+
+    binder.setOnUpdate(async (_, receivedContainer) => {
+        onUpdateContainer = receivedContainer;
+    });
+
+    await binder.updateData({ a: 2 }, false);
+
+    assert.strictEqual(onUpdateContainer, container);
+});
+
 test('Binder.isNotSet true when value is undefined', () => {
     const binder = new Binder(undefined, {});
     const valueToTest = undefined;
